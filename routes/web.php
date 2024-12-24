@@ -7,3 +7,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('students', StudetsController::class);
+//dwadwadawdwa
