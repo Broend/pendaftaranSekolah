@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::resource('students', StudetsController::class);
-//dwadwadawdwa
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginAction'])->name('login');
 Route::get('/register', [AuthController::class, 'register']);
