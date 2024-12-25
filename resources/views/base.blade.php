@@ -18,7 +18,10 @@
 </head>
 
 <body>
-    @yield('content')
+    @include('partials.navbar')
+    <div class="pt-[30px] px-5 lg:px-[75px]">
+        @yield('content')
+    </div>
 </body>
 
 </html>
