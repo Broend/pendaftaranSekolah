@@ -18,10 +18,19 @@
 </head>
 
 <body>
-    @include('partials.navbar')
-    <div class="pt-[30px] px-5 lg:px-[75px]">
+    @if (!in_array(request()->route()->getName(), ['login', 'register']))
+        @include('partials.navbar')
+    @endif
+    <div @class([
+        'pt-[30px] px-5 lg:px-[75px]' => !in_array(request()->route()->getName(), [
+            'login',
+            'register',
+        ]),
+    ])>
         @yield('content')
     </div>
+
+
 </body>
 
 </html>
