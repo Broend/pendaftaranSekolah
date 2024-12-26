@@ -2,7 +2,7 @@
     <a href="" class="flex items-center space-x-4">
         <img src="https://satujam.com/wp-content/uploads/2017/08/20150622033653LOGO_OSIS_SMA.jpg"
             class="w-[70px] py-5 rounded" alt="">
-        <h1 class="text-white font-bold text-xl">SMA 1123 Kudung Ngidul</h1>
+        <h1 class="text-white font-bold text-xl">SMA Lontol Kudung Ngidul</h1>
     </a>
     <div>
         <ul class="flex space-x-4 text-white">
