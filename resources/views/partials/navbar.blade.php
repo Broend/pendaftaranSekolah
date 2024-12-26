@@ -9,7 +9,7 @@
             <li class="hover:text-gray-200 transition"><a href="">Dashboard</a></li>
             <li class="hover:text-gray-200 transition"><a href="">Profil</a></li>
             <li class="hover:text-gray-200 transition"><a href="">Contact</a></li>
-            <li class="hover:text-gray-200 transition"><a href="{{ route('login') }}">Logout</a></li>
+            <li class="hover:text-gray-200 transition"><a href="{{ route('logout') }}">Logout</a></li>
         </ul>
     </div>
 </nav>
