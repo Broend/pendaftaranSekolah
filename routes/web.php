@@ -10,7 +10,7 @@ Route::resource('students', StudetsController::class);
 //dwadwadawdwa
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginAction'])->name('login');
-Route::get('/register', [AuthController::class, 'register']);
+Route::get('/register', [AuthController::class, 'register'])->name('register.pg');
 Route::post('/register', [AuthController::class, 'registerAction'])->name('register');
 
 Route::middleware(['auth'])->group(function () {
