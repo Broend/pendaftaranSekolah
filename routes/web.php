@@ -23,4 +23,5 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('profil', [BaseController::class, 'profil'])->name('profil');
     Route::get('/daftar', [BaseController::class, 'daftar']);
+    Route::post('/daftar', [BaseController::class, 'daftarFunc'])->name('daftar.func');
 });
