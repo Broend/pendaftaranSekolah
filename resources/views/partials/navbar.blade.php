@@ -7,7 +7,7 @@
     <div>
         <ul class="flex space-x-4 text-white">
             <li class="hover:text-gray-200 transition"><a href="">Dashboard</a></li>
-            <li class="hover:text-gray-200 transition"><a href="">Profil</a></li>
+            <li class="hover:text-gray-200 transition"><a href="{{ route('profil') }}">Profil</a></li>
             <li class="hover:text-gray-200 transition"><a href="">Contact</a></li>
             <li class="hover:text-gray-200 transition"><a href="{{ route('logout') }}">Logout</a></li>
         </ul>
