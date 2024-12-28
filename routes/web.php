@@ -22,4 +22,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::get('profil', [BaseController::class, 'profil'])->name('profil');
+    Route::get('/daftar', [BaseController::class, 'daftar']);
 });

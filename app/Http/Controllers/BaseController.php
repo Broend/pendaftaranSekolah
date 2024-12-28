@@ -10,4 +10,9 @@ class BaseController extends Controller
     {
         return view('profil.index');
     }
+
+    public function daftar()
+    {
+        return view('daftar.index');
+    }
 }
