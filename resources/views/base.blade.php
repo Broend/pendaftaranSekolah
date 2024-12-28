@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    @if (!in_array(request()->route()->getName(), ['login', 'register']))
+    @if (!in_array(request()->route()->getName(), ['login', 'register.pg']))
         @include('partials.navbar')
     @endif
     <div @class([
