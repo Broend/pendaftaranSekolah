@@ -25,7 +25,7 @@
     <div @class([
         'pt-[100px] top-[90px] px-5 lg:px-[75px] relative' => !in_array(
             request()->route()->getName(),
-            ['login', 'register']),
+            ['login', 'register.pg']),
     ])>
         @yield('content')
     </div>
