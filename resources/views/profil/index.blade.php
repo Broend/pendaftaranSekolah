@@ -3,7 +3,7 @@
     <div class="">
         <div class="absolute w-full left-0 top-0 z-[1] overflow-hidden">
             <img src="{{ asset('assetStyle/staticPicture/gambarSekolah.jpg') }}" alt=""
-                class="w-full brightness-[40%] h-[30rem] object-cover blur-sm scale-105">
+                class="w-full brightness-[40%] h-[33rem] object-cover blur-sm scale-105 md:h-[30rem]">
         </div>
         <div
             class="absolute z-10 text-white left-[10%] right-[10%] top-[180px] w-[80%] md:left-[20%] md:right[20%] md:w-[60%] md:top-[190px]">
