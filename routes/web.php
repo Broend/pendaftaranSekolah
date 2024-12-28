@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::resource('students', StudetsController::class);
-//dwadwadawdwa
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginAction'])->name('login');
 Route::get('/register', [AuthController::class, 'register'])->name('register.pg');
@@ -18,4 +17,6 @@ Route::middleware(['auth'])->group(function () {
         return redirect()->route('dashboard');
     });
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });
