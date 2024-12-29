@@ -1,5 +1,6 @@
 @extends('base')
 @section('content')
+
     <h1 class="font-semibold text-3xl text-center mb-6">Halaman Kontak</h1>
     <div class="grid gap-8 grid-cols-1 md:grid-cols-2">
         <div class="py-5">
@@ -118,30 +119,46 @@
                         </svg>
                     </div>
                     <div>
-                        <small class="text-gray-600 font-semibold">Jl. Memew No. 69, Ngawi, Jomokerto, Jawa Jawir, 69690</small>
+                        <small class="text-gray-600 font-semibold">Jl. Memew No. 69, Ngawi, Jomokerto, Jawa Jawir,
+                            69690</small>
                     </div>
                 </div>
             </div>
         </div>
         <div class="py-5">
             <div class="bg-white p-8 rounded-lg shadow-md max-w-lg mx-auto">
+                @if (session('success'))
+                    {{ session('success') }}
+                @endif
+                @if ($errors->any())
+                    <div class="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 mb-4">
+                        <ul class="list-disc pl-5 space-y-1">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 {{-- <h2 class="text-2xl font-semibold text-gray-700 mb-6">Form Kontak</h2> --}}
-                <form action="" method="post">
-                    <input type="hidden" name="user_id">
+                <form action="{{ route('contact.action') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                     <div class="mb-6">
                         <label for="name" class="block text-gray-700 font-semibold mb-2">Student Name</label>
                         <input type="text" name="name" id="name"
-                            class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            value="{{ old('name') }}">
                     </div>
                     <div class="mb-6">
                         <label for="name" class="block text-gray-700 font-semibold mb-2">Email</label>
                         <input type="email" name="email" id="email"
-                            class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            value="{{ old('email') }}">
                     </div>
                     <div class="mb-6">
                         <label for="name" class="block text-gray-700 font-semibold mb-2">Message</label>
                         <textarea name="message" id="message" cols="30" rows="10"
-                            class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                            class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">{{ old('message') }}</textarea>
                     </div>
                     <div class="mb-0">
                         <input type="submit" value="Kirim"

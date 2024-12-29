@@ -25,7 +25,7 @@ class AuthController extends Controller
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
             return redirect()->route('dashboard');
         } else {
-            return redirect()->route('login')->with('error', 'Invalid credentials');
+            return redirect()->route('login')->with('error', 'Data tidak ditemukan')->withInput();
         }
     }
     public function register()
@@ -38,12 +38,21 @@ class AuthController extends Controller
             'name' => ['required', 'max:100'],
             'email' => ['required', 'email'],
             'password' => ['required', 'min:8']
+        ], [
+            'name.required' => 'Nama harus diisi',
+            'email.required' => 'Email harus diisi',
+            'email.email' => 'Email harus valid',
+            'password.required' => 'Password harus diisi',
+            'password.min' => 'Password minimal 8 karakter'
         ]);
 
         $nama_siswa = $request->input('name');
         $email = $request->input('email');
         $password = $request->input('password');
-
+        $cekEmail = User::where('email', $email)->exists();
+        if ($cekEmail) {
+            return redirect()->route('register')->with('error', 'Email sudah terdaftar')->withInput();
+        };
         $siswa = User::create([
             'name' => $nama_siswa,
             'email' => $email,

@@ -16,21 +16,53 @@
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endif
+
+    <style>
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f3f3f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+    </style>
 </head>
 
 <body>
-    @if (!in_array(request()->route()->getName(), ['login', 'register.pg']))
-        @include('partials.navbar')
-    @endif
-    <div @class([
-        'pt-[50px] top-[90px] px-5 lg:px-[75px] relative' => !in_array(
-            request()->route()->getName(),
-            ['login', 'register.pg']),
-    ])>
-        @yield('content')
+    <div id="loader">
+        <div class="relative w-12 h-12 rounded-full animate-spin" id="loading">
+            <div class="absolute top-0 left-0 w-full h-full border-t-4 border-blue-500 rounded-full"></div>
+            <div class="absolute top-0 left-0 w-full h-full border-r-4 border-green-500 rounded-full"></div>
+            <div class="absolute top-0 left-0 w-full h-full border-b-4 border-yellow-500 rounded-full"></div>
+        </div>
+    </div>
+    <div id="content">
+        @if (!in_array(request()->route()->getName(), ['login', 'register.pg']))
+            @include('partials.navbar')
+        @endif
+        <div @class([
+            'pt-[50px] top-[90px] px-5 lg:px-[75px] relative' => !in_array(
+                request()->route()->getName(),
+                ['login', 'register.pg']),
+        ])>
+            @yield('content')
+        </div>
     </div>
 
+    <script>
+        window.onload = function() {
+            const loader = document.getElementById('loader')
+            const content = document.getElementById('content')
 
+            loader.style.display = 'none'
+            content.style.display = 'block'
+        }
+    </script>
 </body>
 
 </html>
