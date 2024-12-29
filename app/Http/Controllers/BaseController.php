@@ -32,7 +32,7 @@ class BaseController extends Controller
         ], [
             'nis.required' => 'NIS wajib diisi',
             'jurusan.required' => 'Jurusan wajib diisi',
-            'angkatan.required' => 'Angkatan wajib diisi',
+            'angakatan.required' => 'Angkatan wajib diisi',
             'alamat.required' => 'Alamat wajib diisi',
             'nomorhp.required' => 'Nomor HP wajib diisi',
             'jenis_kelamin.required' => 'Jenis Kelamin wajib diisi',
