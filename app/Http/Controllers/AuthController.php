@@ -23,7 +23,11 @@ class AuthController extends Controller
         $password = $request->input('password');
 
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            return redirect()->route('dashboard');
+            if (Auth::user()->role == 0) {
+                return redirect()->route('profil');
+            } else {
+                return redirect()->route('admin');
+            }
         } else {
             return redirect()->route('login')->with('error', 'Data tidak ditemukan')->withInput();
         }
