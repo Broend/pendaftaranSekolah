@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BaseController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StudetsController;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::get('profil', [BaseController::class, 'profil'])->name('profil');
+
+    Route::get('contact', [ContactController::class, 'contact'])->name('contact');
     Route::get('/daftar', [BaseController::class, 'daftar']);
     Route::post('/daftar', [BaseController::class, 'daftarFunc'])->name('daftar.func');
 });
