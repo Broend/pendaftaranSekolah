@@ -7,8 +7,10 @@
     </a>
     <div class="hidden md:block">
         <ul class="flex space-x-4 text-white">
+            @if (auth()->user()->role == 1)                
             <li class="hover:text-gray-200 transition {{ request()->is('dashboard') ? 'active' : '' }}"><a
                     href="/dashboard">Dashboard</a></li>
+            @endif
             <li class="hover:text-gray-200 transition {{ request()->routeIs('profil') ? 'active' : '' }}"><a
                     href="{{ route('profil') }}">Profil</a></li>
             <li class="hover:text-gray-200 transition {{ request()->routeIs('contact') ? 'active' : '' }}"><a
