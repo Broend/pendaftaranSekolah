@@ -17,16 +17,16 @@ class AuthController extends Controller
     {
         $request->validate([
             'email' => ['required', 'email'],
-            'password' => ['required', 'min:8']
+            'password' => ['required']
         ]);
         $email = $request->input('email');
         $password = $request->input('password');
 
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
             if (Auth::user()->role == 0) {
-                return redirect()->route('profil');
+                return redirect()->intended('profil');
             } else {
-                return redirect()->route('admin');
+                return redirect()->intended('admin');
             }
         } else {
             return redirect()->route('login')->with('error', 'Data tidak ditemukan')->withInput();
@@ -65,12 +65,12 @@ class AuthController extends Controller
 
         Auth::login($siswa);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('profil');
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('login');
+        return redirect()->route('profil');
     }
 }
