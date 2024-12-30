@@ -15,13 +15,13 @@ Route::post('/login', [AuthController::class, 'loginAction'])->name('login');
 Route::get('/register', [AuthController::class, 'register'])->name('register.pg');
 Route::post('/register', [AuthController::class, 'registerAction'])->name('register');
 
+Route::get('profil', [BaseController::class, 'profil'])->name('profil');
+Route::get('/', function () {
+    return redirect()->route('profil');
+});
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', function () {
-        return redirect()->route('profil');
-    });
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-    Route::get('profil', [BaseController::class, 'profil'])->name('profil');
     Route::get('contact', [ContactController::class, 'contact'])->name('contact');
     Route::post('contact', [ContactController::class, 'contactAction'])->name('contact.action');
     Route::get('/daftar', [BaseController::class, 'daftar']);
