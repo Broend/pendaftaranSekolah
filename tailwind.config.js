@@ -14,6 +14,15 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            keyframes: {
+                slideDownUp: {
+                    '0%': { transform: 'translateY(-100%)', opacity: '0' }, // Mulai di luar layar atas
+                    '100%': { transform: 'translateY(0)', opacity: '1' },    // Muncul di posisi normal
+                },
+            },
+            animation: {
+                slideDownUp: 'slideDownUp 2s ease-out', // Durasi animasi 2 detik, sekali
+            },
         },
     },
     plugins: [],
