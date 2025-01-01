@@ -26,7 +26,7 @@ class AuthController extends Controller
             if (Auth::user()->role == 0) {
                 return redirect()->intended('profil');
             } else {
-                return redirect()->intended('admin');
+                return redirect()->intended('admin/dashboard');
             }
         } else {
             return redirect()->route('login')->with('error', 'Data tidak ditemukan')->withInput();
