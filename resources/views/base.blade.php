@@ -8,6 +8,7 @@
     <title>Laravel</title>
 
     <!-- Fonts -->
+    <script src="{{ asset('vendor/jquery-3.7.1.min.js') }}"></script>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />

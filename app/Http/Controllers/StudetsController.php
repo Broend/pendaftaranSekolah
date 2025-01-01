@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Daftar;
 use App\Models\Studets;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class StudetsController extends Controller
@@ -12,7 +14,11 @@ class StudetsController extends Controller
      */
     public function index()
     {
-        //
+        $ttlSiswaDftr = Daftar::count();
+        $ttlSiswaAcc = User::count();
+        $siswaDaftar = Daftar::orderByDesc('id')->paginate(8);
+        $siswaAcc = User::orderByDesc('id')->where('role', 0)->paginate(8);
+        return view('admin.siswa.index', compact('siswaDaftar', 'siswaAcc', 'ttlSiswaDftr', 'ttlSiswaAcc'));
     }
 
     /**
@@ -34,10 +40,7 @@ class StudetsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Studets $studets)
-    {
-        //
-    }
+    public function show($id) {}
 
     /**
      * Show the form for editing the specified resource.
@@ -50,9 +53,16 @@ class StudetsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Studets $studets)
+    public function update($id)
     {
-        //
+        $studets = Daftar::find($id);
+        $studets->status = 1;
+        $studets->save();
+        return response()->json([
+            'success' => true,
+            'message' => 'Murid berhasil terseleksi',
+            'data' => $studets
+        ]);
     }
 
     /**

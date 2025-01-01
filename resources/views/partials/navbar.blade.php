@@ -7,27 +7,28 @@
     <div class="hidden md:block">
         <ul class="flex space-x-4 text-slate-400">
             @if (auth()->check() && auth()->user()->role === 1)
-                <li class="hover:text-slate-950 transition {{ request()->is('dashboard') ? 'active' : '' }}">
-                    <a href="/dashboard" class="flex items-center gap-2 p-2">
+                <li class="hover:text-slate-950 transition {{ request()->is('admin/dashboard') ? 'active' : '' }}">
+                    <a href="{{ route('admin') }}" class="flex items-center gap-2 p-2">
                         <i class="ri-dashboard-2-line"></i> Dashboard
                     </a>
                 </li>
+            @else
+                <li class="hover:text-slate-950 transition {{ request()->routeIs('profil') ? 'active' : '' }}">
+                    <a href="{{ route('profil') }}" class="flex items-center gap-2 p-2">
+                        <i class="ri-community-line"></i> Profil
+                    </a>
+                </li>
+                <li class="hover:text-slate-950 transition {{ request()->routeIs('contact') ? 'active' : '' }}">
+                    <a href="{{ route('contact') }}" class="flex items-center gap-2 p-2">
+                        <i class="ri-customer-service-2-line"></i> Contact
+                    </a>
+                </li>
+                <li class="hover:text-slate-950 transition {{ request()->is('daftar') ? 'active' : '' }}">
+                    <a href="/daftar" class="flex items-center gap-2 p-2">
+                        <i class="ri-user-add-line"></i> Daftar
+                    </a>
+                </li>
             @endif
-            <li class="hover:text-slate-950 transition {{ request()->routeIs('profil') ? 'active' : '' }}">
-                <a href="{{ route('profil') }}" class="flex items-center gap-2 p-2">
-                    <i class="ri-community-line"></i> Profil
-                </a>
-            </li>
-            <li class="hover:text-slate-950 transition {{ request()->routeIs('contact') ? 'active' : '' }}">
-                <a href="{{ route('contact') }}" class="flex items-center gap-2 p-2">
-                    <i class="ri-customer-service-2-line"></i> Contact
-                </a>
-            </li>
-            <li class="hover:text-slate-950 transition {{ request()->is('daftar') ? 'active' : '' }}">
-                <a href="/daftar" class="flex items-center gap-2 p-2">
-                    <i class="ri-user-add-line"></i> Daftar
-                </a>
-            </li>
             @if (!auth()->check())
                 <li class="hover:text-slate-950 transition {{ request()->is('daftar') ? 'active' : '' }}">
                     <a href="{{ route('login') }}" class="flex items-center gap-2 p-2">
@@ -35,7 +36,7 @@
                     </a>
                 </li>
             @endif
-            @if (auth()->check())
+        @if (auth()->check())
                 <li class="text-red-400 hover:text-red-600 transition">
                     <a href="{{ route('logout') }}" class="flex items-center gap-2 p-2">
                         <i class="ri-logout-box-r-line"></i> Logout

@@ -25,5 +25,9 @@ export default {
             },
         },
     },
-    plugins: [],
+    plugins: [
+        require('flowbite/plugin')({
+            datatables: true,
+        }),
+    ],
 };
