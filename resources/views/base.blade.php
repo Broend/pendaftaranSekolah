@@ -63,6 +63,21 @@
             loader.style.display = 'none'
             content.style.display = 'block'
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnNavbar = document.getElementById('btn-navbarResp')
+            const navbar = document.getElementById('navbar')
+
+            btnNavbar.addEventListener('click', () => {
+                if(navbar.classList.contains('opacity-0')) {
+                    navbar.classList.remove('opacity-0', 'translate-y-[-20px]', 'pointer-events-none')
+                    navbar.classList.add('opacity-100', 'translate-y-0', 'pointer-events-all')
+                } else {
+                    navbar.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-all')
+                    navbar.classList.add('opacity-0', 'translate-y-[-20px]', 'pointer-events-none')
+                }
+            })
+        })
     </script>
 </body>
 
