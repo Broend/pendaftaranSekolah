@@ -14,6 +14,7 @@ class BaseController extends Controller
         return view('profil.index');
     }
 
+
     public function daftar()
     {
         $cekdata = Daftar::where('user_id', Auth::user()->id)->exists();
