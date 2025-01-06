@@ -89,31 +89,7 @@
                 </table>
                 <!-- Pagination -->
                 <div class="bg-white px-4 py-3 border-t border-gray-200 sm:px-6">
-                    <div class="flex items-center justify-between">
-                        <div class="text-sm text-gray-700">
-                            Menampilkan 1 - 10 dari 150 data
-                        </div>
-                        <div class="flex-1 flex justify-end">
-                            <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px">
-                                <a href="#"
-                                    class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                                    Previous
-                                </a>
-                                <a href="#"
-                                    class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
-                                    1
-                                </a>
-                                <a href="#"
-                                    class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
-                                    2
-                                </a>
-                                <a href="#"
-                                    class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                                    Next
-                                </a>
-                            </nav>
-                        </div>
-                    </div>
+                    {{ $siswaAcc->appends(['tab' => request('tab')])->links() }}
                 </div>
             </div>
         </div>
@@ -214,7 +190,8 @@
                                             <button id="terima" class="terima text-green-600 hover:text-green-900"
                                                 data-id="{{ $item->id }}">Terima</button>
                                         @else
-                                            <button id="terima" disabled class="terima text-green-600 hover:text-green-900"
+                                            <button id="terima" disabled
+                                                class="terima text-green-600 hover:text-green-900"
                                                 data-id="{{ $item->id }}">Sudah diterima</button>
                                         @endif
                                     </td>

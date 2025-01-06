@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Daftar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class BaseController extends Controller
@@ -15,7 +16,8 @@ class BaseController extends Controller
 
     public function daftar()
     {
-        return view('daftar.index');
+        $cekdata = Daftar::where('user_id', Auth::user()->id)->exists();
+        return view('daftar.index', compact('cekdata'));
     }
 
     public function daftarFunc(Request $request)
@@ -38,7 +40,6 @@ class BaseController extends Controller
             'jenis_kelamin.required' => 'Jenis Kelamin wajib diisi',
             'tanggal_lahir.required' => 'Tanggal Lahir wajib diisi'
         ]);
-        toastr()->success('Berhasil daftar, kami akan menginfokan lagi');
         Daftar::create($val);
         return back()->with('success', 'Berhasil daftar, kami akan menginfokan lagi');
     }
