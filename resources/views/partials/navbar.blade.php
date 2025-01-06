@@ -7,7 +7,7 @@
     <div class="hidden md:block">
         <ul class="flex space-x-4 text-slate-400">
             @if (auth()->check() && auth()->user()->role === 1)
-                <li class="hover:text-slate-950 transition {{ request()->is('admin/dashboard') ? 'active' : '' }}">
+                <li class="hover:text-slate-950 transition {{ request()->is('admin/*') ? 'active' : '' }}">
                     <a href="{{ route('admin') }}" class="flex items-center gap-2 p-2">
                         <i class="ri-dashboard-2-line"></i> Dashboard
                     </a>
