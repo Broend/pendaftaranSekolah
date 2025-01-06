@@ -127,9 +127,6 @@
         </div>
         <div class="py-5">
             <div class="bg-white p-8 rounded-lg shadow-md max-w-lg mx-auto">
-                @if (session('success'))
-                    {{ session('success') }}
-                @endif
                 @if ($errors->any())
                     <div class="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 mb-4">
                         <ul class="list-disc pl-5 space-y-1">

@@ -172,27 +172,27 @@
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        @if ($item->status === 0)
-                                            <span
-                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                                                Menunggu Verifikasi
-                                            </span>
-                                        @else
-                                            <span
-                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-500 text-white">
-                                                Sudah diterima
-                                            </span>
-                                        @endif
+                                        <span id="sudahTerima-{{ $item->id }}"
+                                            class="px-2 sudahTerima {{ $item->status === 1 ? 'inline-flex' : 'hidden' }} text-xs leading-5 font-semibold rounded-full bg-blue-500 text-white">
+                                            Sudah diterima
+                                        </span>
+                                        <span id="tungguVerif-{{ $item->id }}"
+                                            class="px-2 tungguVerif {{ $item->status === 1 ? 'hidden' : 'inline-flex' }} text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                            Menunggu Verifikasi
+                                        </span>
+
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                        <button class="text-red-600 hover:text-red-900 mr-3">Hapus</button>
+                                        <form action="{{ route('students.destroy', $item->id) }}" method="post"
+                                            onsubmit="return confirm('apakah anda yakin ingin menghapus siswa?, jika iya, siswa tersebut akan Gugur.')">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="text-red-600 hover:text-red-900 mr-3"
+                                                type="submit">Hapus</button>
+                                        </form>
                                         @if ($item->status === 0)
                                             <button id="terima" class="terima text-green-600 hover:text-green-900"
                                                 data-id="{{ $item->id }}">Terima</button>
-                                        @else
-                                            <button id="terima" disabled
-                                                class="terima text-green-600 hover:text-green-900"
-                                                data-id="{{ $item->id }}">Sudah diterima</button>
                                         @endif
                                     </td>
                                 </tr>
@@ -253,6 +253,7 @@
         });
 
         $(document).ready(function() {
+
             $(document).on('click', '.terima', function() {
                 var id = $(this).data('id');
                 $.ajax({
@@ -265,8 +266,14 @@
                     success: function(response) {
                         console.log('berhasil mengubah data');
                         if (response.success) {
-                            // Update tombol untuk menunjukkan status diterima
-                            $(`button[data-id="${id}"]`).html('<i class="ri-check-line"></i>');
+                            var tungguVerif = $(`#tungguVerif-${id}`)
+                            var sudahTerima = $(`#sudahTerima-${id}`)
+                            var tmblTerima = $('#terima')
+                            tmblTerima.addClass('hidden');
+                            // $(`button[data-id="${id}"]`).html('<i class="ri-check-line"></i>');
+                            sudahTerima.removeClass('hidden').addClass('inline-flex')
+                            tungguVerif.removeClass('inline-flex').addClass('hidden')
+
                         }
                     },
                     error: function(xhr) {
@@ -274,6 +281,10 @@
                     }
                 });
             });
+
+            $.ajax({
+
+            })
         });
     </script>
 @endsection

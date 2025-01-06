@@ -70,6 +70,7 @@ class StudetsController extends Controller
      */
     public function destroy(Studets $studets)
     {
-        //
+        $studets->delete();
+        return back()->with('success', 'Berhasil menghapus data siswa');
     }
 }

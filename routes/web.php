@@ -30,5 +30,6 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('dashboard', [AdminController::class, 'index'])->name('admin');
         Route::resource('students', StudetsController::class);
+        // Route::get('cek/students', [StudetsController::class, 'cek']);
     });
 });
