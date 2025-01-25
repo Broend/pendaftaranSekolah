@@ -24,7 +24,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('contact', [ContactController::class, 'contact'])->name('contact');
     Route::post('contact', action: [ContactController::class, 'contactAction'])->name('contact.action');
-    Route::get('/daftar', [BaseController::class, 'daftar']);
+    Route::get('/daftar', [BaseController::class, 'daftar'])->name('daftar');
     Route::post('/daftar', [BaseController::class, 'daftarFunc'])->name('daftar.func');
 
     Route::prefix('admin')->group(function () {

@@ -47,7 +47,7 @@
             @include('partials.navbar')
         @endif
         <div @class([
-            'pt-[50px] top-[60px] px-5 lg:px-[75px] relative' => !in_array(
+            'pt-[50px] px-5 lg:px-[75px] relative' => !in_array(
                 request()->route()->getName(),
                 ['login', 'register.pg']),
         ])>
