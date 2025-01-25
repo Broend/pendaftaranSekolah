@@ -1,4 +1,4 @@
-<nav class="flex fixed z-50 justify-between items-center lg:p-3 p-3 lg:px-[30px] bg-white shadow-md w-full">
+<nav class="flex sticky top-0 z-10 justify-between items-center lg:p-3 p-3 lg:px-[30px] bg-white shadow-md w-full">
     <a href="/" class="flex items-center gap-4">
         <img src="https://satujam.com/wp-content/uploads/2017/08/20150622033653LOGO_OSIS_SMA.jpg"
             class="w-[40px] h-[40px] rounded-full" alt="">
